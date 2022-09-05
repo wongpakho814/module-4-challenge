@@ -79,4 +79,20 @@ input[type=submit] {
 
 .hs-btn {
     display: inline-block;
+    padding: 20px;
+}
+
+.prev-scores {
+    width: 60%;
+    text-align: center;
+}
+
+.initial-item {
+    padding: 10px;
+    background-color: #f4b41a;
+}
+
+.initial-item:nth-child(even) { 
+    background: #143d59; 
+    color: white;
 }

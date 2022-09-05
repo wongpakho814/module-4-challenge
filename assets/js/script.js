@@ -1,9 +1,10 @@
 var mainEl = document.querySelector(".main-content");
 var timerEl = document.querySelector(".timer");
+var prevScore = document.querySelector(".prev-scores");
 var timer;
 var timerCount = 0;
 var isFinished = false;
-var wonInitials = [];
+var initialArr = [];
 
 // Initiate the timer, and handle situation where timer reaches 0
 function startTimer() {
@@ -132,19 +133,60 @@ function result(bool) {
     (bool === false) ? score.textContent = "Your final score is " + (timerCount-10) + "." : 
     score.textContent = "Your final score is " + timerCount + ".";
 
-    let initials = document.createElement("form");
-    initials.setAttribute("action", "assets/html/highscore.html");
-    initials.innerHTML = `
+    let initial = document.createElement("form");
+    initial.setAttribute("action", "assets/html/highscore.html");
+    initial.setAttribute("id", "result-form");
+    initial.innerHTML = `
         <label for="initials">Enter initials: </label>
         <input type="text" id="initials" name="initials">
         <input type="submit" value="Submit">
     `;
-    
-    console.log(wonInitials);
-    // localStorage.setItem("");
-    
+
     mainEl.innerHTML = content;
     mainEl.appendChild(score);
-    mainEl.appendChild(initials);
+    mainEl.appendChild(initial);
     mainEl.appendChild(showAns(bool));
+    
+    document.querySelector("#result-form").addEventListener("submit", function(event){
+        initialArr.push({
+            "name": document.getElementById("initials").value,
+            "score": timerCount+1
+        });
+        // Sort the score in descending order
+        initialArr.sort(function(a, b) {
+            return b.score - a.score
+        });
+        localStorage.setItem("initials", JSON.stringify(initialArr));
+    });
 }
+
+// Retrieve the stored initials from the localStorage
+function getInitials() {
+    let storedInitials = JSON.parse(localStorage.getItem("initials"));
+    (storedInitials === null) ? initialArr = [] : initialArr = storedInitials;
+}
+
+// Clear the local storage
+function clearStorage() {
+    localStorage.clear();
+    prevScore.innerHTML = "";
+}
+
+// Add <li> to the prev-scores <ul> in highscore.html according to the local storage
+function loadInitials() {
+    for (let i = 0; i < initialArr.length; i++) {
+        let initialItem = document.createElement("li");
+        initialItem.setAttribute("class", "initial-item");
+        initialItem.textContent = (i+1) + ". " + initialArr[i].name + " - " + initialArr[i].score;
+        if (prevScore !== null) {
+            prevScore.appendChild(initialItem);
+        }
+    }
+}
+
+// Init function that retrieve data from localStorage
+function init() {
+    getInitials();
+    loadInitials();
+}
+init();
