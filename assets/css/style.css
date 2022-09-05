@@ -3,6 +3,21 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }  
 
+button, input[type=submit] {
+    background-color: #2ea44f;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+}
+
+button:hover {
+    background-color: #2c974b;
+}
+
 header {
     padding: 20px;
     font-size: 120%;
@@ -38,21 +53,6 @@ header .timer {
     padding: 20px;
 }
 
-.main-content button {
-  background-color: #2ea44f;
-  border: 1px solid rgba(27, 31, 35, .15);
-  border-radius: 6px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 6px 16px;
-}
-
-.main-content button:hover {
-  background-color: #2c974b;
-}
-
 .answers-btn button {
     display: block;
     margin: 10px;
@@ -67,4 +67,12 @@ header .timer {
     text-align: center;
     border-top: 1px solid gray;
     color: gray;
+}
+
+.score {
+    margin-bottom: 10px;
+}
+
+input[type=submit] {
+    margin-left: 5px;
 }

@@ -1,9 +1,13 @@
 var mainEl = document.querySelector(".main-content");
+var timer = 0;
 
 function showAns(bool) {
     let showAns = document.createElement('div');
     showAns.setAttribute("class", "show-answer");
     bool ? showAns.innerHTML = "Correct!" : showAns.innerHTML = "Wrong!";
+    setTimeout(() => {
+        showAns.style.display = 'none';
+    }, 700)
     return showAns;
 }
 
@@ -66,12 +70,30 @@ function question5(bool) {
     let question = `
         <h1>5. A very useful tool used during development and debugging for printing content to the debugger is: </h1>
         <section class="answers-btn">
-            <button onclick="location.href='assets/html/highscore.html'">1. JavaScript</button>
-            <button onclick="location.href='assets/html/highscore.html'">2. terminal/bash</button>
-            <button onclick="location.href='assets/html/highscore.html'">3. for loops</button>
-            <button onclick="location.href='assets/html/highscore.html'">4. console.log</button>
+            <button onclick="result(false)">1. JavaScript</button>
+            <button onclick="result(false)">2. terminal/bash</button>
+            <button onclick="result(false)">3. for loops</button>
+            <button onclick="result(true)">4. console.log</button>
         </section>
     `;
     mainEl.innerHTML = question;
     mainEl.appendChild(showAns(bool));
 } 
+
+// onclick="location.href='assets/html/highscore.html'"
+function result(bool) {
+    let content = `<h1>All done!</h1>`;
+    let score = document.createElement("p");
+    score.setAttribute("class", "score");
+    score.textContent = "Your final score is " + timer + ".";
+    let initials = document.createElement("form");
+    initials.innerHTML = `
+        <label for="initials">Enter initials: </label>
+        <input type="text" id="initials" name="initials">
+        <input type="submit" value="Submit">
+    `;
+    mainEl.innerHTML = content;
+    mainEl.appendChild(score);
+    mainEl.appendChild(initials);
+    mainEl.appendChild(showAns(bool));
+}
