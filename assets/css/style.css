@@ -3,11 +3,6 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }  
 
-h1 {
-    font-size: 200%;
-    padding: 20px;
-}
-
 header {
     padding: 20px;
     font-size: 120%;
@@ -28,6 +23,13 @@ header .timer {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+}
+
+.main-content h1 {
+    font-size: 200%;
+    padding: 20px;
+    width: 70%;
+    text-align: center;
 }
 
 .main-content .paragraphs {
@@ -57,11 +59,12 @@ header .timer {
 }
 
 .show-answer {
-    width: 50%;
+    width: 30%;
     margin-top: 20px;
     padding: 0px;
     font-size: 120%;
     font-style: italic; 
     text-align: center;
-    border-top: 1px solid black;
+    border-top: 1px solid gray;
+    color: gray;
 }
