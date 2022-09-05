@@ -23,17 +23,17 @@ header .timer {
 }
 
 .main-content {
+    margin-top: 100px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
 }
 
 .main-content .paragraphs {
     font-size: 110%;
     text-align: center;
-    padding: 0px 20px 20px 20px;
+    padding: 20px;
 }
 
 .main-content button {
@@ -54,4 +54,14 @@ header .timer {
 .answers-btn button {
     display: block;
     margin: 10px;
+}
+
+.show-answer {
+    width: 50%;
+    margin-top: 20px;
+    padding: 0px;
+    font-size: 120%;
+    font-style: italic; 
+    text-align: center;
+    border-top: 1px solid black;
 }
