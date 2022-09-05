@@ -76,3 +76,7 @@ header .timer {
 input[type=submit] {
     margin-left: 5px;
 }
+
+.hs-btn {
+    display: inline-block;
+}

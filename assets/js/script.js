@@ -3,6 +3,7 @@ var timerEl = document.querySelector(".timer");
 var timer;
 var timerCount = 0;
 var isFinished = false;
+var wonInitials = [];
 
 // Initiate the timer, and handle situation where timer reaches 0
 function startTimer() {
@@ -32,6 +33,7 @@ function showAns(bool) {
     }
     else if (bool === false)  {
         showAns.innerHTML = "Wrong!"
+        timerCount -= 10;
     }
     // If the timer runs out and reaches 0
     else {
@@ -124,9 +126,12 @@ function question5(bool) {
 function result(bool) {
     isFinished = true;
     let content = `<h1>All done!</h1>`;
+
     let score = document.createElement("p");
     score.setAttribute("class", "score");
+    (bool === false) ? score.textContent = "Your final score is " + (timerCount-10) + "." : 
     score.textContent = "Your final score is " + timerCount + ".";
+
     let initials = document.createElement("form");
     initials.setAttribute("action", "assets/html/highscore.html");
     initials.innerHTML = `
@@ -134,6 +139,10 @@ function result(bool) {
         <input type="text" id="initials" name="initials">
         <input type="submit" value="Submit">
     `;
+    
+    console.log(wonInitials);
+    // localStorage.setItem("");
+    
     mainEl.innerHTML = content;
     mainEl.appendChild(score);
     mainEl.appendChild(initials);
